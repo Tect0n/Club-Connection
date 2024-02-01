@@ -31,6 +31,9 @@ class CustomNamesPage extends StatelessWidget {
                         ),
                       ),
                     ),
+
+                    SizedBox(height: 50.0),
+
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
