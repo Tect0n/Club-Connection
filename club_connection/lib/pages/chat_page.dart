@@ -25,10 +25,10 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat Page'),
+        title: Text('Club Connect'),
         actions: [
             TextButton(
-            child: Text(currentUser == widget.user1 ? widget.user2 ?? 'Cat' : widget.user1 ?? 'Dog'),
+            child: Text('Switch to ' + (currentUser == widget.user1 ? widget.user2 ?? 'Cat' : widget.user1 ?? 'Dog')),
             onPressed: () {
               setState(() {
                 currentUser = currentUser == widget.user1 ? widget.user2 : widget.user1;
