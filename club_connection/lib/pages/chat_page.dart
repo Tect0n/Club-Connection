@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatefulWidget {
@@ -25,18 +27,44 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Club Connect'),
-        actions: [
+        title: Row(
+          children: [
+            Text(widget.user2 ?? 'Cat',
+            style: TextStyle(color: Color.fromARGB(176, 233, 25, 25),),),
+            Spacer(),
             TextButton(
-            child: Text('Switch to ' + (currentUser == widget.user1 ? widget.user2 ?? 'Cat' : widget.user1 ?? 'Dog')),
-            onPressed: () {
-              setState(() {
-                currentUser = currentUser == widget.user1 ? widget.user2 : widget.user1;
-              });
-            },
-          ),
-        ],
+              child: RichText(
+                text: TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Switch to ',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    TextSpan(
+                      text: currentUser == widget.user1 ? widget.user2 ?? 'Cat' : widget.user1 ?? 'Dog',
+                      style: TextStyle(color: currentUser == widget.user1 ? Color.fromARGB(176, 233, 25, 25) : Colors.deepPurple),
+                    ),
+                  ],
+                ),
+              ),
+              onPressed: () {
+                setState(() {
+                  currentUser = currentUser == widget.user1 ? widget.user2 : widget.user1;
+                });
+              },
+            ),
+
+
+            Spacer(),
+            Text(widget.user1 ?? 'Dog',
+            style: TextStyle(color: Colors.deepPurple),),
+          ]
+        ),
       ),
+
+
+
+
       body: Column(
         children: [
           Expanded(
@@ -52,7 +80,7 @@ class _ChatPageState extends State<ChatPage> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: isUser1 ? Colors.blue : Colors.green,
+                        color: isUser1 ? Colors.deepPurple : Color.fromARGB(176, 233, 25, 25),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
@@ -76,19 +104,35 @@ class _ChatPageState extends State<ChatPage> {
                 Expanded(
                   child: TextField(
                     controller: messageController,
-                    decoration: InputDecoration(hintText: 'Type a message'),
+                    cursorColor: currentUser == widget.user1 ? Colors.deepPurple : Color.fromARGB(176, 233, 25, 25),
+                    decoration: InputDecoration(
+                      hintText: 'Type a message',
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: currentUser == widget.user1 ? Colors.deepPurple : Color.fromARGB(176, 233, 25, 25), width: 2.0),
+                      ),
+                    )
                   ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.send),
-                  onPressed: () {
-                    setState(() {
-                      messages.add({
-                        'user': currentUser,
-                        'text': messageController.text,
-                      });
-                      messageController.clear();
-                    });
+                ValueListenableBuilder(
+                  valueListenable: messageController,
+                  builder: (BuildContext context, TextEditingValue value, Widget? child) {
+                    return IconButton(
+                      icon: Icon(Icons.send),
+                      color: value.text.isNotEmpty
+                      ? (currentUser == widget.user1 ? Colors.deepPurple : Color.fromARGB(176, 233, 25, 25))
+                      : Colors.grey,
+                      onPressed: value.text.isNotEmpty
+                        ? () {
+                            setState(() {
+                              messages.add({
+                                'user': currentUser,
+                                'text': messageController.text,
+                              });
+                              messageController.clear();
+                            });
+                          }
+                        : null,
+                    );
                   },
                 ),
               ],

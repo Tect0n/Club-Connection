@@ -30,13 +30,15 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 40.0),
               child: TextField(
                 controller: user1Controller,
+                cursorColor: Color.fromARGB(176, 233, 25, 25),
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                    borderSide: BorderSide(color: Color.fromARGB(176, 233, 25, 25), width: 2.0),
                   ),
                   labelText: 'User 1',
+                  labelStyle: TextStyle(color: Color.fromARGB(176, 233, 25, 25)),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                    borderSide: BorderSide(color: Color.fromARGB(176, 233, 25, 25), width: 2.0),
                   ),
                 ),
               ),
@@ -51,13 +53,15 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 40.0),
               child: TextField(
                 controller: user2Controller,
+                cursorColor: Colors.deepPurple,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.green, width: 2.0),
+                    borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
                   ),
                   labelText: 'User 2',
+                  labelStyle: TextStyle(color: Colors.deepPurple),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.green, width: 2.0),
+                    borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
                   ),
                 ),
               ),
