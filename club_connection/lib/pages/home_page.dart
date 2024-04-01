@@ -4,8 +4,10 @@ import 'package:club_connection/pages/chat_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  final TextEditingController user1Controller = TextEditingController(text: 'Cat');
-  final TextEditingController user2Controller = TextEditingController(text: 'Dog');
+  final TextEditingController user1Controller =
+      TextEditingController(text: 'Cat');
+  final TextEditingController user2Controller =
+      TextEditingController(text: 'Dog');
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +16,17 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
             // Title
-            Text('Club Connect', style: TextStyle(fontSize: 40),),
+            Text(
+              'Meet Cute',
+              style: TextStyle(fontSize: 40),
+            ),
 
-
-
-            SizedBox(height: 50,),
-
+            SizedBox(
+              height: 50,
+            ),
 
             // User 1 input field
-
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.0),
@@ -33,19 +35,23 @@ class HomePage extends StatelessWidget {
                 cursorColor: Color.fromARGB(176, 233, 25, 25),
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color.fromARGB(176, 233, 25, 25), width: 2.0),
+                    borderSide: BorderSide(
+                        color: Color.fromARGB(176, 233, 25, 25), width: 2.0),
                   ),
                   labelText: 'User 1',
-                  labelStyle: TextStyle(color: Color.fromARGB(176, 233, 25, 25)),
+                  labelStyle:
+                      TextStyle(color: Color.fromARGB(176, 233, 25, 25)),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color.fromARGB(176, 233, 25, 25), width: 2.0),
+                    borderSide: BorderSide(
+                        color: Color.fromARGB(176, 233, 25, 25), width: 2.0),
                   ),
                 ),
               ),
             ),
 
-
-            SizedBox(height: 50,),
+            SizedBox(
+              height: 50,
+            ),
 
             // User 2 input field
 
@@ -56,18 +62,22 @@ class HomePage extends StatelessWidget {
                 cursorColor: Colors.deepPurple,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
+                    borderSide:
+                        BorderSide(color: Colors.deepPurple, width: 2.0),
                   ),
                   labelText: 'User 2',
                   labelStyle: TextStyle(color: Colors.deepPurple),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.deepPurple, width: 2.0),
+                    borderSide:
+                        BorderSide(color: Colors.deepPurple, width: 2.0),
                   ),
                 ),
               ),
             ),
 
-            SizedBox(height: 50,),
+            SizedBox(
+              height: 50,
+            ),
 
             // Button to start chat
 
@@ -75,11 +85,13 @@ class HomePage extends StatelessWidget {
               height: 60, // set height of the button
               width: double.infinity, // set width of the button
               alignment: Alignment.center,
-              margin: EdgeInsets.symmetric(horizontal: 40.0), // set margin of the button
+              margin: EdgeInsets.symmetric(
+                  horizontal: 40.0), // set margin of the button
               child: ElevatedButton(
                 onPressed: () {
                   // Check if user 1 and user 2 are not empty
-                  if (user1Controller.text.isEmpty || user2Controller.text.isEmpty) {
+                  if (user1Controller.text.isEmpty ||
+                      user2Controller.text.isEmpty) {
                     // Show alert dialog
                     showDialog(
                       context: context,
@@ -96,28 +108,27 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     );
-
                   } else {
                     // Navigate to chat page
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ChatPage(
-                        user1 : user1Controller.text,
-                        user2 : user2Controller.text,
+                      MaterialPageRoute(
+                        builder: (context) => ChatPage(
+                          user1: user1Controller.text,
+                          user2: user2Controller.text,
+                        ),
                       ),
-                    ),
                     );
-                    }
+                  }
                 },
 
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.grey[900],
+                  backgroundColor: Colors.grey[900],
                 ),
-                child: Text('Start Chat', style: TextStyle(fontSize: 20)), // increase text size
+                child: Text('Start Chat',
+                    style: TextStyle(fontSize: 20)), // increase text size
               ),
             ),
-
-
           ],
         ),
       ),

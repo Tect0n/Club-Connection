@@ -18,26 +18,18 @@ class MainApp extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColor: Colors.black,
         scaffoldBackgroundColor: Colors.black,
-        hintColor: Colors.grey[700],
+        hintColor: Colors.grey[400],
         textTheme: TextTheme(
           bodyText1: TextStyle(color: Colors.white),
           bodyText2: TextStyle(color: Colors.grey[400]),
         ),
-
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.black,
           iconTheme: IconThemeData(color: Colors.white),
         ),
-        
-
-
       ),
       debugShowCheckedModeBanner: false,
-
       home: HomePage(),
-
     );
   }
 }
-
-
